@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
 function ExpencesOverview(){
-  return<BottomTabs.Navigator>
+  return<BottomTabs.Navigator screenOptions={{}}>
     <BottomTabs.Screen name='RecentExpences' component={RecentExpences} />
     <BottomTabs.Screen name='AllExpences' component={AllExpences} />
   </BottomTabs.Navigator>
@@ -25,7 +25,12 @@ export default function App() {
 <StatusBar style="auto" />
 <NavigationContainer>
   <Stack.Navigator>
-     <Stack.Screen name="ExpencesOverview" component={ExpencesOverview}/>
+    
+     <Stack.Screen 
+     name="ExpencesOverview" 
+     component={ExpencesOverview} 
+     options={{ headerShown: false}}/>
+
       <Stack.Screen name="ManageExpence" component={ManageExpences}/>
      
   </Stack.Navigator>
