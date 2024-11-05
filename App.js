@@ -23,7 +23,7 @@ function ExpencesOverview(){
     <BottomTabs.Screen 
     name='RecentExpences' 
     component={RecentExpences} options={{
-      title: 'Recent Expences' ,
+      title: 'Recent Expences',
       tabBarLabel: 'Recent',
       tabBarIcon: ({color, size}) => <Ionicons name='hourglass' size={size} color={color}/>
     }} />
