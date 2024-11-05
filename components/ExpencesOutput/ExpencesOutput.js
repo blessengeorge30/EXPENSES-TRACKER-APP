@@ -34,6 +34,24 @@ const DUMMY_EXPENCES =[
         amount: 18.99,
         date: new Date ('2022-02-18')
     },
+    {
+        id: 'e4',
+        description: 'Some bananas',
+        amount: 5.99,
+        date: new Date ('2021-05-09')
+    },
+    {
+        id: 'e7',
+        description: 'A book',
+        amount: 5.99,
+        date: new Date ('2022-02-21')
+    },
+    {
+        id: 'e8',
+        description: 'Another book',
+        amount: 18.99,
+        date: new Date ('2022-02-18')
+    },
 ]
 
 function ExpencesOutput({ expences, expencesPeriod}) {
@@ -52,7 +70,9 @@ export default ExpencesOutput;
 const styles= StyleSheet.create({
     container:{
         flex: 1,
-        padding:24,
+        paddingHorizontal:24,
+        paddingTop:24,
+        paddingbottom:0,
         backgroundColor: GlobalStyles.colors.primary700,
     }
 })
