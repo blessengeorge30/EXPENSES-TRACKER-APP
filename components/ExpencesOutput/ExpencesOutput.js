@@ -38,7 +38,7 @@ const DUMMY_EXPENCES =[
 
 function ExpencesOutput({ expences, expencesPeriod}) {
     return (
-        <View>
+        <View style={styles.container}>
           <ExpencesSummary expences={DUMMY_EXPENCES} periodName={expencesPeriod}/>
           <ExpencesList expences={DUMMY_EXPENCES}/>
         </View>
@@ -51,6 +51,7 @@ export default ExpencesOutput;
 
 const styles= StyleSheet.create({
     container:{
+        flex: 1,
         padding:24,
         backgroundColor: GlobalStyles.colors.primary700,
     }
