@@ -1,9 +1,19 @@
-import { View ,Flatlist} from "react-native";
+import { View, FlatList, Text } from "react-native";
 
-function ExpencesList() {
-    return(
-        <Flatlist/>
-    )
-};
+function renderExpenceItem(itemData) {
+    return (
+        <Text>{itemData.item.description}</Text>
+    );
+}
+
+function ExpencesList({ expences }) {
+    return (
+        <FlatList
+            data={expences}
+            renderItem={renderExpenceItem}
+            keyExtractor={(item) => item.id}
+        />
+    );
+}
 
 export default ExpencesList;

@@ -1,17 +1,12 @@
 import { View,Text ,StyleSheet} from "react-native";
+import ExpencesOutput from "../components/ExpencesOutput/ExpencesOutput";
 
 function RecentExpences() {
     return (
-        <View>
-            <Text> All Expences</Text>
-        </View>
+      <ExpencesOutput expencesPeriod={'Last 7 Days'}/>
     );
 }
 
-export default RecentExpences;
+export default RecentExpences
 
-// const style=StyleSheet.create({
-//     container: {
-//         flex: 1,
-//     }
-// })
+

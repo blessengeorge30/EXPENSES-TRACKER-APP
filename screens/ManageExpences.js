@@ -8,10 +8,4 @@ function ManageExpences() {
     );
 }
 
-export default ManageExpences;
-
-// const style=StyleSheet.create({
-//     container: {
-//         flex: 1,
-//     }
-// })
+export default ManageExpences

@@ -1,6 +1,7 @@
-import { Text,View, FlatList } from "react-native";
+import { Text,View, FlatList, StyleSheet } from "react-native";
 import ExpencesSummary from "./ExpencesSummary";
 import ExpencesList from "./ExpencesList";
+import { GlobalStyles } from "../../constants/styles";
 
 const DUMMY_EXPENCES =[
     {
@@ -22,13 +23,13 @@ const DUMMY_EXPENCES =[
         date: new Date ('2021-05-09')
     },
     {
-        id: 'e3',
+        id: 'e4',
         description: 'A book',
         amount: 5.99,
         date: new Date ('2022-02-21')
     },
     {
-        id: 'e3',
+        id: 'e5',
         description: 'Another book',
         amount: 18.99,
         date: new Date ('2022-02-18')
@@ -38,11 +39,19 @@ const DUMMY_EXPENCES =[
 function ExpencesOutput({ expences, expencesPeriod}) {
     return (
         <View>
-          <ExpencesSummary expences={expences} periodName={expencesPeriod}/>
-          <ExpencesList/>
+          <ExpencesSummary expences={DUMMY_EXPENCES} periodName={expencesPeriod}/>
+          <ExpencesList expences={DUMMY_EXPENCES}/>
         </View>
     )
    
 }
 
 export default ExpencesOutput;
+
+
+const styles= StyleSheet.create({
+    container:{
+        padding:24,
+        backgroundColor: GlobalStyles.colors.primary700,
+    }
+})
