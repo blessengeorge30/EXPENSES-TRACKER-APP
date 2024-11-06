@@ -1,20 +1,31 @@
 import { Pressable, View, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "../constants/styles";
 import { getFormattedDate } from "../util/date";
+import { useNavigation } from '@react-navigation/native'
 
-function ExpenceItems({ description, date, amount }) {
+function ExpenceItems({ id, description, date, amount }) {
+    const navigation = useNavigation();
+
+    function expencePressHandler() {
+        navigation.navigate('ManageExpence', {
+            expenceId: id
+        });
+    }
     return (
-        <Pressable>
-            <View style={styles.expenceItem}>
-                <View>
-                    <Text style={[styles.textbase, styles.description]}>{description}</Text>
-                    <Text style={styles.textbase}>{getFormattedDate(date)}</Text>
+        
+            <Pressable onPress={expencePressHandler} style={({ pressed }) => pressed && styles.pressed}>
+                <View style={styles.expenceItem}>
+                    <View>
+                        <Text style={[styles.textbase, styles.description]}>{description}</Text>
+                        <Text style={styles.textbase}>{getFormattedDate(date)}</Text>
+                    </View>
+                    <View style={styles.amountcontainer}>
+                        <Text style={styles.amount}>{amount.toFixed(2)}</Text>
+                    </View>
                 </View>
-                <View style={styles.amountcontainer}>
-                    <Text style={styles.amount}>{amount.toFixed(2)}</Text>
-                </View>
-            </View>
-        </Pressable>
+            </Pressable>
+   
+
     );
 }
 
@@ -50,10 +61,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 4,
-        minWidth:80
+        minWidth: 80
     },
     amount: {
         color: GlobalStyles.colors.primary500,
         fontweight: 'bold'
-    }
+    },
+    pressed: {
+        opacity: 0.5, // Adjust opacity for pressed feedback
+    },
+    
 });

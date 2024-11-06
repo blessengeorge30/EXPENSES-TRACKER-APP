@@ -35,7 +35,7 @@ const DUMMY_EXPENCES =[
         date: new Date ('2022-02-18')
     },
     {
-        id: 'e4',
+        id: 'e6',
         description: 'Some bananas',
         amount: 5.99,
         date: new Date ('2021-05-09')
@@ -57,8 +57,8 @@ const DUMMY_EXPENCES =[
 function ExpencesOutput({ expences, expencesPeriod}) {
     return (
         <View style={styles.container}>
-          <ExpencesSummary expences={DUMMY_EXPENCES} periodName={expencesPeriod}/>
-          <ExpencesList expences={DUMMY_EXPENCES}/>
+          <ExpencesSummary expences={DUMMY_EXPENCES} periodName={expencesPeriod} s/>
+          <ExpencesList expences={DUMMY_EXPENCES} />
         </View>
     )
    
@@ -71,8 +71,10 @@ const styles= StyleSheet.create({
     container:{
         flex: 1,
         paddingHorizontal:24,
-        paddingTop:24,
+        paddingTop:34,
         paddingbottom:0,
+        
+        
         backgroundColor: GlobalStyles.colors.primary700,
     }
 })
