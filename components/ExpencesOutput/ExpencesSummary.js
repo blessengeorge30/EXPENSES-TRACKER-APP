@@ -19,7 +19,8 @@ export default ExpencesSummary;
 
 const styles =StyleSheet.create({
     container:{
-        padding: 10,
+        padding: 25,
+        marginBottom:14,
         backgroundColor: GlobalStyles.colors.primary50,
         borderRadius: 6,
         flexDirection:'row',
@@ -28,11 +29,11 @@ const styles =StyleSheet.create({
 
     },
     period:{
-        fontSize:12,
+        fontSize:16,
         color:GlobalStyles.colors.primary400
     },
     sum: {
-        fontSize: '16',
+        fontSize: '18',
         fontWeight: 'bold',
         color: GlobalStyles.colors.primary500
     }

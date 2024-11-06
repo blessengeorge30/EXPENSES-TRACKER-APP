@@ -1,0 +1,101 @@
+import { createContext, useReducer } from "react";
+
+const DUMMY_EXPENCES =[
+    {
+        id: 'e1',
+        description: 'A pair of shoes',
+        amount: 59.99,
+        date: new Date ('2021-12-19')
+    },
+    {
+        id: 'e2',
+        description: 'A pair of trousers',
+        amount: 89.99,
+        date: new Date ('2022-01-29')
+    },
+    {
+        id: 'e3',
+        description: 'Some bananas',
+        amount: 5.99,
+        date: new Date ('2021-05-09')
+    },
+    {
+        id: 'e4',
+        description: 'A book',
+        amount: 5.99,
+        date: new Date ('2022-02-21')
+    },
+    {
+        id: 'e5',
+        description: 'Another book',
+        amount: 18.99,
+        date: new Date ('2022-02-18')
+    },
+    {
+        id: 'e6',
+        description: 'Some bananas',
+        amount: 5.99,
+        date: new Date ('2021-05-09')
+    },
+    {
+        id: 'e7',
+        description: 'A book',
+        amount: 5.99,
+        date: new Date ('2022-02-21')
+    },
+    {
+        id: 'e8',
+        description: 'Another book',
+        amount: 18.99,
+        date: new Date ('2022-02-18')
+    },
+]
+
+export const ExpencesContext = createContext({
+    expences: [],
+    addExpence: ({ description, amount, date }) => { },
+    deleteExpence: (id) => { },
+    updateExpence: (id, { description, amount, date }) => { },
+
+});
+
+function expencesReducer(state, action) {
+    switch (action.type) {
+        case 'ADD':
+            const id = new Date().toString() + Math.random().toString();
+            return [{...action.payload,id: id }, ...state]
+        case 'UPDATE':
+            const updateableExpenseIndex = state.findIndex((expence) => expence.id === action.payload.id);
+            const updateableExpence = state[updateableExpenseIndex];
+            const updatedItem = { ...updateableExpence , ...action.payload.data}
+            const updatedExpences =[...state];
+            updatedExpences[updateableExpenseIndex] = updatedItem;
+
+            return updatedExpences;
+            
+        case 'DELETE':
+            return state.filter((expence) => expence.id !== action.payload)
+        default:
+            return state;
+    }
+}
+
+function ExpencesContextProvider({ children }) {
+    const [expencesState, dispatch] = useReducer(expencesReducer, DUMMY_EXPENCES);
+
+    function addExpence({ expenceData }) {
+        dispatch({ type: 'ADD', payload: expenceData});
+    }
+
+    function deleteExpence(id){
+        dispatch({type: 'DELETE' , payload: id});
+    }
+
+    function updateExpence(id, expenceData) {
+        dispatch({type: 'UPDATE' , payload: {id: id ,data: expenceData}})
+    }
+
+    return <ExpencesContext.Provider>{children}</ExpencesContext.Provider>
+}
+
+export default ExpencesContextProvider;

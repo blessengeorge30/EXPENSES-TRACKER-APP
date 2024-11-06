@@ -17,14 +17,14 @@ function ManageExpences({ route, navigation }) {
 
 
     function deleteExpensehandler() {
-
+        navigation.goBack();
     }
 
     function cancelHandler() {
-
+        navigation.goBack();
     }
     function confirmHandler() {
-
+        navigation.goBack();
     }
 
 
