@@ -16,7 +16,7 @@ function ManageExpences({ route, navigation }) {
 
 
 
-    function deleteExpensehandler() {
+    function deleteExpencehandler() {
         navigation.goBack();
     }
 
@@ -42,7 +42,7 @@ function ManageExpences({ route, navigation }) {
                         icon="trash"
                         color={GlobalStyles.colors.error500}
                         size={46} 
-                        onPress={deleteExpensehandler} />
+                        onPress={deleteExpencehandler} />
 
                   
                 </View>

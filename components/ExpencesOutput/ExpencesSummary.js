@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "../../constants/styles";
 
-function ExpencesSummary({expences, periodName}){
+function ExpencesSummary({expences =[], periodName}){
     const expencesSum = expences.reduce((sum, expence) => {
         return sum + expence.amount
     }, 0);
@@ -33,7 +33,7 @@ const styles =StyleSheet.create({
         color:GlobalStyles.colors.primary400
     },
     sum: {
-        fontSize: '18',
+        fontSize: 16,
         fontWeight: 'bold',
         color: GlobalStyles.colors.primary500
     }
