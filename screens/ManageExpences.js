@@ -20,7 +20,7 @@ function ManageExpences({ route, navigation }) {
 
 
     function deleteExpencehandler() {
-        expencesCtx.deleteExpence() 
+        expencesCtx.deleteExpence(editedExpenceId) 
               navigation.goBack();
  
     }
