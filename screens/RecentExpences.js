@@ -10,14 +10,14 @@ function RecentExpences() {
     const today = new Date();
     const date7DaysAgo =getDateMinusDays(today, 7);
 
-    return expence.date > date7DaysAgo;
+    return (expence.date >= date7DaysAgo) && (expence.date <= today );
   });
 
     return (
-      <ExpencesOutput expences={RecentExpences} expencesPeriod={'Last 7 Days'}/>
+      <ExpencesOutput expences={RecentExpences} expencesPeriod={'Last 7 Days'} fallbackText='No Expences Registered for the past 7 days '/>
     );
 }
 
-export default RecentExpences
+export default RecentExpences;
 
 
