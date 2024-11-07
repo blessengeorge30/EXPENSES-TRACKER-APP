@@ -1,10 +1,13 @@
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import IconButton from "../components/UI/IconButton";
 import { GlobalStyles } from "../constants/styles";
 import Button from "../components/UI/Button";
+import { ExpencesContext } from "../store/expences-context";
 
 function ManageExpences({ route, navigation }) {
+    const expencesCtx = useContext(ExpencesContext);
+
     const editedExpenceId = route.params?.expenceId;
     const isEditing = !!editedExpenceId;
 
@@ -17,7 +20,9 @@ function ManageExpences({ route, navigation }) {
 
 
     function deleteExpencehandler() {
-        navigation.goBack();
+        expencesCtx.deleteExpence() 
+              navigation.goBack();
+ 
     }
 
     function cancelHandler() {
