@@ -12,6 +12,8 @@ function ManageExpences({ route, navigation }) {
     const editedExpenceId = route.params?.expenceId;
     const isEditing = !!editedExpenceId;
 
+    const selectedExpense = expencesCtx.expences.find(expence => expence.id === editedExpenceId);
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: isEditing ? 'Edit Expence' : 'Add Expence'
@@ -29,21 +31,12 @@ function ManageExpences({ route, navigation }) {
     function cancelHandler() {
         navigation.goBack();
     }
-    function confirmHandler() {
+    function confirmHandler(expenseData) {
         if (isEditing) {
             expencesCtx.updateExpence(
-                editedExpenceId,
-                {
-                description: 'Test!!' ,
-                amount : 55.99,
-                date: new Date('2024-11-6') 
-              });  
+                editedExpenceId,expenseData);  
         } else {
-            expencesCtx.addExpence({
-              description: 'Test' ,
-              amount : 19.99,
-              date: new Date('2024-11-7') 
-            });
+            expencesCtx.addExpence(expenseData);
         }
         navigation.goBack();
 
@@ -52,11 +45,12 @@ function ManageExpences({ route, navigation }) {
 
     return (
         <View style={styles.container}>
-            <ExpenceForm />
-            <View style={styles.buttons}>
-                <Button  style={styles.button}mode={"flat"} onPress={cancelHandler}>Cancel</Button>
-                <Button onPress={confirmHandler}>{isEditing ? 'Update' : 'Add'}</Button>
-            </View>
+            <ExpenceForm 
+            submitButtonLabel={isEditing ? 'update' : 'Add' } 
+            onSubmit={confirmHandler}
+            onCancel={cancelHandler} 
+            defaultValues={selectedExpense}/>
+          
 
             {isEditing && (
                 <View style={styles.deletecontainer}>
@@ -84,16 +78,6 @@ const styles = StyleSheet.create({
         backgroundColor: GlobalStyles.colors.primary800
 
     },
-    buttons:{
-        flexDirection: 'row',
-        justifyContent:'center',
-        alignItems:'center',
-    },
-    button: {
-        minWidth:120,
-        marginHorizontal: 8,
-    },
-
     deletecontainer: {
         marginTop: 16,
         paddingTop: 8,
