@@ -1,5 +1,5 @@
 
-# MEALS APP - UDEMY ASSIGNMENT  🚀 💻
+# EXPENSE TRACKER APP - UDEMY ASSIGNMENT  🚀 💻
 
 
 
@@ -7,7 +7,7 @@
 
  
 
-##  Screenshots
+##  Preview 
 ![App Screenshot](./screenshots/Overview.png)
 
 
