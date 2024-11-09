@@ -36,8 +36,7 @@ function ExpencesOverview(){
 >
 
 
-    <BottomTabs.Screen 
-    name='RecentExpences' 
+    <BottomTabs.Screen name='RecentExpences' 
     component={RecentExpences} options={{
       title: 'Recent Expences',
       tabBarLabel: 'Recent',
