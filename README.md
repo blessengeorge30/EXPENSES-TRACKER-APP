@@ -10,7 +10,7 @@
  
 
 ##  Preview 
-![App Screenshot](./screenshots/Overview(1).png)
+![App Screenshot](./screenshots/Overview.png)
 
 
 
