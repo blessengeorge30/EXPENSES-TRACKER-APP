@@ -9,7 +9,7 @@
 
  
 
-##  Preview 
+##  Preview of the Application
 ![App Screenshot](./screenshots/Overview.png)
 
 
