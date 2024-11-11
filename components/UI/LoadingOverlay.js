@@ -1,0 +1,26 @@
+import { View , ActivityIndicator, StyleSheet,Text} from "react-native";
+import { GlobalStyles } from "../../constants/styles";
+
+function LoadingOvelay() {
+    return (
+        <View style={styles.container}>
+            <Text>loading overview</Text>
+            <ActivityIndicator size="large" color='white'/> 
+        </View>
+    )
+
+}
+
+export default LoadingOvelay;
+
+const styles =StyleSheet.create({
+    container: {
+        flex :1 ,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 24,
+        backgroundColor: GlobalStyles.colors.primary700
+
+    },
+
+})

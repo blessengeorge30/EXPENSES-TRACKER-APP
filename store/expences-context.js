@@ -16,6 +16,7 @@ function expencesReducer(state, action) {
         case 'ADD':
             const id = new Date().toString() + Math.random().toString();
             return [{...action.payload,id: id }, ...state]
+        
         case 'SET':
           const inverted = action.payload.reverse();
           return inverted;
@@ -44,7 +45,7 @@ function ExpencesContextProvider({ children }) {
     }
 
     function setExpences(expences) {
-        dispatch({type: 'SET' , payload: expense});
+        dispatch({type: 'SET' , payload: expences});
     }
     
     function deleteExpence(id){

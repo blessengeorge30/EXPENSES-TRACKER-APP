@@ -2,10 +2,9 @@ import { useContext, useLayoutEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import IconButton from "../components/UI/IconButton";
 import { GlobalStyles } from "../constants/styles";
-
 import { ExpencesContext } from "../store/expences-context";
 import ExpenceForm from "../components/ManageExpence/ExpenceForms";
-import { storeExpense } from "../util/http";
+import { storeExpence, updateExpence, deleteExpence } from "../util/http";
 
 function ManageExpences({ route, navigation }) {
     const expencesCtx = useContext(ExpencesContext);
@@ -13,61 +12,56 @@ function ManageExpences({ route, navigation }) {
     const editedExpenceId = route.params?.expenceId;
     const isEditing = !!editedExpenceId;
 
-    const selectedExpense = expencesCtx.expences.find(expence => expence.id === editedExpenceId);
+    const selectedExpence = expencesCtx.expences.find(
+        (expence) => expence.id === editedExpenceId
+    );
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: isEditing ? 'Edit Expence' : 'Add Expence'
+            title: isEditing ? "Edit Expence" : "Add Expence",
         });
     }, [navigation, isEditing]);
 
-
-
-    function deleteExpencehandler() {
-        expencesCtx.deleteExpence(editedExpenceId) 
-              navigation.goBack();
- 
+    async function deleteExpencehandler() {
+        await deleteExpence(editedExpenceId);
+        expencesCtx.deleteExpence(editedExpenceId);
+        navigation.goBack();
     }
 
     function cancelHandler() {
         navigation.goBack();
     }
-    function confirmHandler(expenseData) {
+
+    async function confirmHandler(expenceData) {
         if (isEditing) {
-            expencesCtx.updateExpence(
-                editedExpenceId,expenseData);  
+            expencesCtx.updateExpence(editedExpenceId, expenceData);
+            await updateExpence(editedExpenceId, expenceData);
         } else {
-            storeExpense(expenseData);
-            expencesCtx.addExpence(expenseData);
+            const id = await storeExpence(expenceData);
+            expencesCtx.addExpence({ ...expenceData, id: id });
         }
         navigation.goBack();
-
     }
-
 
     return (
         <View style={styles.container}>
-            <ExpenceForm 
-            submitButtonLabel={isEditing ? 'update' : 'Add' } 
-            onSubmit={confirmHandler}
-            onCancel={cancelHandler} 
-            defaultValues={selectedExpense}/>
-          
-
+            <ExpenceForm
+                submitButtonLabel={isEditing ? "Update" : "Add"}
+                onSubmit={confirmHandler}
+                onCancel={cancelHandler}
+                defaultValues={selectedExpence} // Corrected this line
+            />
             {isEditing && (
                 <View style={styles.deletecontainer}>
-
                     <IconButton
                         icon="trash"
                         color={GlobalStyles.colors.error500}
-                        size={46} 
-                        onPress={deleteExpencehandler} />
-
-                  
+                        size={46}
+                        onPress={deleteExpencehandler}
+                    />
                 </View>
-            )} 
+            )}
         </View>
-
     );
 }
 
@@ -77,14 +71,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 24,
-        backgroundColor: GlobalStyles.colors.primary800
-
+        backgroundColor: GlobalStyles.colors.primary800,
     },
     deletecontainer: {
         marginTop: 16,
         paddingTop: 8,
         borderTopWidth: 2,
         borderTopColor: GlobalStyles.colors.primary200,
-        alignItems: 'center'
+        alignItems: "center",
     },
-})
+});

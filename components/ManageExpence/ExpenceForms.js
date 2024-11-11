@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { getFormattedDate } from '../../util/date';
 import { GlobalStyles } from '../../constants/styles';
 
-function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) {  // Destructure the props here
+function ExpenceForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) {  // Destructure the props here
     const [inputs, setInputs] = useState({
         amount: {value: defaultValues ? defaultValues.amount.toString() : '',
             isValid: true,
@@ -28,15 +28,15 @@ function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) { 
     }
 
     function submitHandler() {
-        const expenseData = {
+        const expenceData = {
             amount: +inputs.amount.value,
             date: new Date(inputs.date.value),
             description: inputs.description.value
         };
     
-        const amountIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
-        const dateIsValid = !isNaN(Date.parse(expenseData.date)); // Updated date validation
-        const descriptionIsValid = expenseData.description.trim().length > 0;
+        const amountIsValid = !isNaN(expenceData.amount) && expenceData.amount > 0;
+        const dateIsValid = !isNaN(Date.parse(expenceData.date)); // Updated date validation
+        const descriptionIsValid = expenceData.description.trim().length > 0;
     
         if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
             setInputs((curInputs) => {
@@ -49,7 +49,7 @@ function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) { 
             return;
         }
     
-        onSubmit(expenseData);
+        onSubmit(expenceData);
     }
     
 
@@ -60,7 +60,7 @@ function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) { 
 
     return (
         <View style={styles.form}>
-            <Text style={styles.textstyle}> YOUR EXPENSE </Text>
+            <Text style={styles.textstyle}> EXPENSES </Text>
             <View style={styles.inputRow}>
                 <Input
                     style={styles.rowInput}
@@ -80,7 +80,7 @@ function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) { 
                     textInputConfig={{
                         placeholder: 'YYYY-MM-DD',
                         maxLength: 10,
-                        keyboardType: 'numeric',
+                        // keyboardType: 'numeric',
                         onChangeText: inputChangeHandler.bind(this, 'date'),
                         value: inputs.date.value,
                     }}
@@ -109,7 +109,7 @@ function ExpenseForm({ onCancel, onSubmit, submitButtonLabel ,defaultValues}) { 
     );
 }
 
-export default ExpenseForm;
+export default ExpenceForm;
 
 const styles = StyleSheet.create({
     inputRow: {
