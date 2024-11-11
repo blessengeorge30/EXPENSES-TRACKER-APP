@@ -8,9 +8,11 @@ import { fetchExpences } from "../util/http";
 function RecentExpences() {
   const expencesCtx =  useContext(ExpencesContext);
 
+
   useEffect(() => {
     async function getExpences(){
-      await fetchExpences();
+      const expences = await fetchExpences();
+
     }
     getExpences();
   }, []);
