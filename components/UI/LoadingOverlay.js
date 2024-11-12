@@ -4,8 +4,8 @@ import { GlobalStyles } from "../../constants/styles";
 function LoadingOvelay() {
     return (
         <View style={styles.container}>
-            <Text>loading overview</Text>
-            <ActivityIndicator size="large" color='white'/> 
+            
+            <ActivityIndicator size='large' color='white'/> 
         </View>
     )
 

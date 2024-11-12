@@ -14,21 +14,21 @@ export const ExpencesContext = createContext({
 function expencesReducer(state, action) {
     switch (action.type) {
         case 'ADD':
-            const id = new Date().toString() + Math.random().toString();
-            return [{...action.payload,id: id }, ...state]
+            return [action.payload, ...state]
         
         case 'SET':
           const inverted = action.payload.reverse();
           return inverted;
 
         case 'UPDATE':
-            const updateableExpenceIndex = state.findIndex((expence) => expence.id === action.payload.id);
-            const updateableExpence = state[updateableExpenceIndex];
-            const updatedItem = { ...updateableExpence , ...action.payload.data}
-            const updatedExpences =[...state];
-            updatedExpences[updateableExpenceIndex] = updatedItem;
-
-            return updatedExpences;
+            const updatableExpenseIndex = state.findIndex(
+                (expense) => expense.id === action.payload.id
+              );
+              const updatableExpense = state[updatableExpenseIndex];
+              const updatedItem = { ...updatableExpense, ...action.payload.data };
+              const updatedExpenses = [...state];
+              updatedExpenses[updatableExpenseIndex] = updatedItem;
+              return updatedExpenses;
             
         case 'DELETE':
             return state.filter((expence) => expence.id !== action.payload)

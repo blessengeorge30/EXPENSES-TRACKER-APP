@@ -23,9 +23,13 @@ function ManageExpences({ route, navigation }) {
     }, [navigation, isEditing]);
 
     async function deleteExpencehandler() {
-        await deleteExpence(editedExpenceId);
-        expencesCtx.deleteExpence(editedExpenceId);
-        navigation.goBack();
+        try {
+            await deleteExpence(editedExpenceId);
+            expencesCtx.deleteExpence(editedExpenceId);
+            navigation.goBack();
+        } catch (error) {
+            console.error("Delete operation failed:", error);
+        }
     }
 
     function cancelHandler() {
@@ -34,11 +38,21 @@ function ManageExpences({ route, navigation }) {
 
     async function confirmHandler(expenceData) {
         if (isEditing) {
-            expencesCtx.updateExpence(editedExpenceId, expenceData);
-            await updateExpence(editedExpenceId, expenceData);
+            try {
+                console.log(route.params);
+              expencesCtx.updateExpence(editedExpenceId, expenceData); 
+                await updateExpence(editedExpenceId, expenceData);
+         
+            } catch (error) {
+                console.error("Update operation failed:", error);
+            }
         } else {
-            const id = await storeExpence(expenceData);
-            expencesCtx.addExpence({ ...expenceData, id: id });
+            try {
+                const id = await storeExpence(expenceData);
+                expencesCtx.addExpence({ ...expenceData, id: id });
+            } catch (error) {
+                console.error("Add operation failed:", error);
+            }
         }
         navigation.goBack();
     }
@@ -49,7 +63,7 @@ function ManageExpences({ route, navigation }) {
                 submitButtonLabel={isEditing ? "Update" : "Add"}
                 onSubmit={confirmHandler}
                 onCancel={cancelHandler}
-                defaultValues={selectedExpence} // Corrected this line
+                defaultValues={selectedExpence} 
             />
             {isEditing && (
                 <View style={styles.deletecontainer}>
