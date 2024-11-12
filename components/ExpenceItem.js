@@ -34,7 +34,7 @@ export default ExpenceItems;
 const styles = StyleSheet.create({
     expenceItem: {
         padding: 12,
-        marginVertical: 8, // Corrected property
+        marginVertical: 8, 
         backgroundColor: GlobalStyles.colors.primary500,
         flexDirection: 'row',
         justifyContent: 'space-between',
