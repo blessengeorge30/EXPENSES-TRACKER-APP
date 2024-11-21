@@ -55,7 +55,7 @@ export default function App() {
   return (
 <>
 <StatusBar style="auto" />
-<ExpencesContextProvider>
+<ExpencesContextProvider> 
 
 <NavigationContainer>
   <Stack.Navigator screenOptions={{
@@ -70,16 +70,12 @@ export default function App() {
       <Stack.Screen name="ManageExpence" component={ManageExpences} options={{
         presentation: 'modal' , headerTitleStyle: { color: 'white' },
       }}/>
-     
   </Stack.Navigator>
 </NavigationContainer>
   
 </ExpencesContextProvider>
 
-</>
-     
-      
- 
+</> 
   );
 }
 
