@@ -3,7 +3,7 @@
 # EXPENSE TRACKER- UDEMY ASSIGNMENT  🚀 📊
 
 
-Expense Tracker App 
+
 # Overview
 This project is an Expense Tracker Application built using React Native as part of an Udemy assignment. It allows users to track their expenses efficiently and manage their finances. The app integrates Firebase to store and sync expense data securely, ensuring seamless functionality across devices.
 
