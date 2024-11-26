@@ -27,7 +27,7 @@ This project is an Expense Tracker Application built using React Native as part 
 
 
 
-## Firebase Integration
+## Firebase Integration 🔥
 The app uses Firebase to store and manage expense data. Firebase provides a cloud-based backend that ensures the app is scalable and user-friendly. Below are the Firebase services integrated into the app:
 
 ## Firebase Realtime Database:
@@ -37,16 +37,13 @@ The app uses Firebase to store and manage expense data. Firebase provides a clou
 - Firebase Authentication (Optional):
 
 - Provides user authentication to enable personalized expense tracking (if required).
-## Firebase Configuration:
 
-The Firebase SDK is integrated into the app.
-Firebase credentials are stored securely in the app configuration file.
-## Technologies Used
+## Technologies Used 💻
 React Native: Framework for cross-platform mobile app development.
 Firebase: Backend-as-a-Service for real-time data storage and management.
 JavaScript: Primary programming language for the app.
 Redux: Used for state management to handle expense-related data.
-## ## Packages Used
+## Packages Used 📦
 This project uses the following key packages:
 
 react: Core React library for building user interfaces.
