@@ -46,14 +46,14 @@ Redux: Used for state management to handle expense-related data.
 ## Packages Used 📦
 This project uses the following key packages:
 
-react: Core React library for building user interfaces.
-react-native: React Native library for mobile app development.
-firebase: SDK to connect the app with Firebase services.
-redux: State management library for managing app-wide state.
-@react-navigation/native: Enables screen navigation.
-react-native-screens: Optimizes navigation performance.
-react-native-gesture-handler: Handles user gestures and touch interactions.
-expo: Toolset for building React Native apps with ease.
+- react: Core React library for building user interfaces.
+- react-native: React Native library for mobile app development.
+- firebase: SDK to connect the app with Firebase services.
+- redux: State management library for managing app-wide state.
+- @react-navigation/native: Enables screen navigation.
+- react-native-screens: Optimizes navigation performance.
+- react-native-gesture-handler: Handles user gestures and touch interactions.
+- expo: Toolset for building React Native apps with ease.
 
 
 
