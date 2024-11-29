@@ -39,10 +39,10 @@ The app uses Firebase to store and manage expense data. Firebase provides a clou
 - Provides user authentication to enable personalized expense tracking (if required).
 
 ## Technologies Used 💻
-React Native: Framework for cross-platform mobile app development.
-Firebase: Backend-as-a-Service for real-time data storage and management.
-JavaScript: Primary programming language for the app.
-Redux: Used for state management to handle expense-related data.
+- React Native: Framework for cross-platform mobile app development.
+- Firebase: Backend-as-a-Service for real-time data storage and management.
+- JavaScript: Primary programming language for the app.
+
 ## Packages Used 📦
 This project uses the following key packages:
 
